@@ -1,0 +1,572 @@
+/* ==========================================================================
+   VARIÁVEIS DE CONFIGURAÇÃO VISUAL (FÁCIL CUSTOMIZAÇÃO)
+   ========================================================================== */
+:root {
+    /* Paleta de Cores Exigida */
+    --azul: #0a192f;
+    --branco: #ffffff;
+    --azul-celeste: #00b4d8;
+    --azul-metalico: #1e3a8a;
+    --verde: #10b981;
+    --amarelo: #fbbf24;
+    --ouro: #d97706;
+    --preto: #020617;
+
+    /* Configurações de Cores de Componentes Dinâmicos */
+    --bg-pagina: var(--preto);
+    --bg-card: #0f172a;
+    --bg-card-hover: #1e293b;
+    --borda-cor: #334155;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+
+    /* Tipografia e Escalas Fluidas */
+    --familia-fonte: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --tamanho-base: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
+    
+    /* Cantos, Espaçamentos e Sombras Customizáveis */
+    --cantos-arredondados: 12px;
+    --paddings-globais: clamp(1rem, 3vw, 2.5rem);
+    --sombra-suave: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    --sombra-glow: 0 0 20px rgba(0, 180, 216, 0.25);
+}
+
+/* Modificadores de Variáveis para o Modo Claro */
+body.light-mode {
+    --bg-pagina: #f8fafc;
+    --bg-card: var(--branco);
+    --bg-card-hover: #f1f5f9;
+    --borda-cor: #cbd5e1;
+    --texto-principal: #0f172a;
+    --texto-secundario: #475569;
+}
+
+/* ==========================================================================
+   RESETS E COMPORTAMENTOS FLUIDOS GERAIS
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-pagina);
+    color: var(--texto-principal);
+    font-family: var(--familia-fonte);
+    font-size: var(--tamanho-base);
+    line-height: 1.65;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--paddings-globais);
+}
+
+/* Esconder elementos mantendo acessibilidade ativa para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.sr-only-focusable:focus {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 99999;
+    background-color: var(--amarelo);
+    color: var(--preto);
+    padding: 1rem;
+    border-radius: var(--cantos-arredondados);
+    font-weight: bold;
+}
+
+/* Estilo para destacar o elemento que está sendo lido por voz */
+.elemento-leitura-ativa {
+    outline: 3px solid var(--azul-celeste);
+    background-color: rgba(0, 180, 216, 0.08);
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   CAIXA FLUTUANTE DE ACESSIBILIDADE (INFERIOR ESQUERDA)
+   ========================================================================== */
+.acessibilidade-painel {
+    position: fixed;
+    bottom: clamp(15px, 3vw, 30px);
+    left: clamp(15px, 3vw, 30px);
+    z-index: 2000;
+    background-color: var(--bg-card);
+    border: 2px solid var(--azul-celeste);
+    border-radius: 50px;
+    padding: 6px;
+    display: flex;
+    gap: 8px;
+    box-shadow: var(--sombra-suave), var(--sombra-glow);
+}
+
+.acessibilidade-painel button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--azul);
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.acessibilidade-painel button:hover, 
+.acessibilidade-painel button:focus {
+    background-color: var(--azul-celeste);
+    color: var(--preto);
+    transform: translateY(-3px);
+    outline: none;
+}
+
+/* ==========================================================================
+   HERO SECTION (BANNER PRINCIPAL)
+   ========================================================================== */
+.hero {
+    min-height: clamp(350px, 50vh, 550px);
+    background: linear-gradient(135deg, rgba(10, 25, 47, 0.88) 0%, rgba(2, 6, 23, 0.95) 100%);
+    border-bottom: 4px solid var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--paddings-globais);
+}
+
+.hero-wrapper {
+    max-width: 850px;
+}
+
+.hero-titulo {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    color: var(--branco);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+body.light-mode .hero-titulo {
+    color: var(--azul-metalico);
+}
+
+.hero-subtitulo {
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    color: var(--azul-celeste);
+    margin-bottom: 1.8rem;
+}
+
+body.light-mode .hero-subtitulo {
+    color: var(--texto-secundario);
+}
+
+/* ==========================================================================
+   BOTÕES MODERNOS
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--cantos-arredondados);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background-color: var(--azul-celeste);
+    color: var(--preto);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: transparent;
+    border-color: var(--azul-celeste);
+    color: var(--azul-celeste);
+    box-shadow: var(--sombra-glow);
+}
+
+.btn-secondary {
+    background-color: var(--azul-metalico);
+    color: var(--branco);
+}
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: var(--azul-celeste);
+    color: var(--preto);
+}
+
+.btn-gold {
+    background-color: var(--ouro);
+    color: var(--branco);
+    width: 100%;
+}
+.btn-gold:hover, .btn-gold:focus {
+    background-color: var(--amarelo);
+    color: var(--preto);
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+}
+
+/* ==========================================================================
+   GRID DE LAYOUT RESPONSIVO (CONTEÚDO E SIDEBAR)
+   ========================================================================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--paddings-globais);
+    margin-top: var(--paddings-globais);
+    margin-bottom: var(--paddings-globais);
+}
+
+@media (min-width: 1024px) {
+    .main-layout {
+        grid-template-columns: minmax(600px, 2.6fr) minmax(320px, 1fr);
+    }
+}
+
+/* ==========================================================================
+   BLOCOS DE CONTEÚDO DO ARTIGO
+   ========================================================================== */
+.artigo-principal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--paddings-globais);
+}
+
+.bloco-texto h2 {
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    color: var(--branco);
+    margin-bottom: 1rem;
+}
+body.light-mode .bloco-texto h2 {
+    color: var(--azul-metalico);
+}
+
+.bloco-texto p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.texto-destaque {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--verde);
+    border-left: 4px solid var(--verde);
+    padding-left: 1rem;
+}
+
+strong {
+    color: var(--amarelo);
+}
+body.light-mode strong {
+    color: var(--ouro);
+}
+
+.citacao-painel {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--cantos-arredondados);
+    border-right: 4px solid var(--ouro);
+    font-style: italic;
+    box-shadow: var(--sombra-suave);
+}
+
+/* ==========================================================================
+   SEÇÕES EXPANSÍVEIS (ACCORDION)
+   ========================================================================== */
+.accordion {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-cor);
+    border-radius: var(--cantos-arredondados);
+    padding: 1.2rem;
+    box-shadow: var(--sombra-suave);
+}
+
+.accordion-header {
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--branco);
+}
+body.light-mode .accordion-header {
+    color: var(--texto-principal);
+}
+
+.accordion-icon {
+    font-size: 0.85rem;
+    color: var(--azul-celeste);
+    transition: transform 0.2s ease;
+}
+
+.accordion[open] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--borda-cor);
+}
+
+/* ==========================================================================
+   CARDS DE BENEFÍCIOS DA INTELIGÊNCIA ARTIFICIAL
+   ========================================================================== */
+.beneficios-secao h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.introducao-ia, .chamada-ia {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-cor);
+    border-radius: var(--cantos-arredondados);
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: var(--sombra-suave);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-num {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: rgba(0, 180, 216, 0.15);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    color: var(--azul-celeste);
+    margin-bottom: 0.6rem;
+    padding-right: 30px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    text-align: justify;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--azul-celeste);
+    box-shadow: var(--sombra-suave), var(--sombra-glow);
+}
+
+/* ==========================================================================
+   ESTRUTURA OBRIGATÓRIA E PREMIUM DAS IMAGENS
+   ========================================================================== */
+.imagem {
+    width: 100%;
+    border-radius: var(--cantos-arredondados);
+    overflow: hidden;
+    background-color: #0f172a;
+    box-shadow: var(--sombra-suave);
+    border: 1px solid var(--borda-cor);
+}
+
+.imagem img {
+    width: 100%;
+    height: clamp(200px, 35vw, 400px);
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.imagem:hover img {
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   FORMULÁRIO DE INSCRIÇÃO LATERAL (STICKY SIDEBAR)
+   ========================================================================== */
+.sidebar-direita {
+    width: 100%;
+}
+
+.sticky-box {
+    position: sticky;
+    top: 25px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-cor);
+    border-top: 5px solid var(--ouro);
+    border-radius: var(--cantos-arredondados);
+    padding: 1.8rem;
+    box-shadow: var(--sombra-suave);
+}
+
+.sticky-box h2 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--branco);
+    margin-bottom: 0.6rem;
+}
+body.light-mode .sticky-box h2 {
+    color: var(--texto-principal);
+}
+
+.sticky-box p {
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    margin-bottom: 1.2rem;
+}
+
+.form-grupo {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-grupo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--texto-secundario);
+}
+
+.form-grupo input, .form-grupo textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-pagina);
+    border: 1px solid var(--borda-cor);
+    border-radius: 6px;
+    color: var(--texto-principal);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-grupo input:focus, .form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--azul-celeste);
+}
+
+.status-alerta {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: rgba(16, 185, 129, 0.12);
+    border: 1px solid var(--verde);
+    color: var(--verde);
+}
+
+/* ==========================================================================
+   INTERAÇÃO (COMENTÁRIOS)
+   ========================================================================== */
+.comentarios-wrapper {
+    background-color: var(--bg-card);
+    padding: 1.8rem;
+    border-radius: var(--cantos-arredondados);
+    border: 1px solid var(--borda-cor);
+}
+
+.comentarios-wrapper h3 {
+    margin-bottom: 0.4rem;
+}
+
+.comentarios-wrapper p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.lista-comentarios {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.comentario-item {
+    background-color: var(--bg-pagina);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--azul-celeste);
+}
+
+.comentario-data {
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+    margin-bottom: 0.3rem;
+}
+
+/* ==========================================================================
+   RODAPÉ GLOBAL E REFERÊNCIAS
+   ========================================================================== */
+.rodape-global {
+    background-color: var(--preto);
+    border-top: 1px solid var(--borda-cor);
+    padding: 2rem 0;
+    margin-top: var(--paddings-globais);
+    font-size: 0.9rem;
+}
+
+.rodape-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .rodape-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.rodape-assinatura {
+    color: var(--texto-secundario);
+    max-width: 500px;
+}
+
+.rodape-fontes h4 {
+    margin-bottom: 0.4rem;
+}
+
+.rodape-fontes ul {
+    list-style: none;
+}
+
+.rodape-fontes a {
+    color: var(--azul-celeste);
+    text-decoration: none;
+}
+
+.rodape-fontes a:hover {
+    text-decoration: underline;
+}
