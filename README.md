@@ -5,9 +5,9 @@ Markdown
 O projeto aborda a transformação tecnológica e digital do ecossistema de agronegócio brasileiro. O foco central está na introdução de tecnologias biológicas (microrganismos) para mitigação do uso de insumos químicos industriais, bem como nos pilares práticos e benefícios da Inteligência Artificial aplicada (sistemas de irrigação automatizados, drones multiespectrais, previsibilidade climática e maquinários autônomos por GPS).
 
 ## 🎯 Objetivo da Página
-* **Disseminar Inovação:** Servir como portal informacional de alto impacto visual para demonstrar a evolução do Brasil de exportador de commodities básicas para pioneiro global em tecnologia agro-sustentável tropical.
-* **Captura de Leads Qualificados:** Disponibilizar um canal lateral de conversão imediata focado na inscrição de produtores e acadêmicos em seminários web temáticos.
-* **Inclusão Digital e Acessibilidade:** Garantir conformidade universal com boas práticas de acessibilidade na Web através de ajustes de interface em tempo real e motores de leitura sonora integrados.
+* **Disseminar Inovação:**
+* **Captura de Leads Qualificados:** 
+* **Inclusão Digital e Acessibilidade:** 
 
 ## ⚙️ Instruções de Uso da Página Criada
 

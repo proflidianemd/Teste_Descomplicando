@@ -98,9 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ==========================================================================
-    // CAPTURA E PROCESSAMENTO DO FORMULÁRIO LATERAL
-    // ==========================================================================
+   
+    FORMULÁRIO LATERAL
+    
     const formInscricao = document.getElementById("form-inscricao");
     const statusInscricao = document.getElementById("status-inscricao");
 
@@ -116,9 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5000);
     });
 
-    // ==========================================================================
+   
     // SEÇÃO DE COMENTÁRIOS COM SANITIZAÇÃO DE INPUT (ANTI-XSS)
-    // ==========================================================================
+
     const formComentario = document.getElementById("form-comentario");
     const campoComentario = document.getElementById("campo-comentario");
     const listaComentarios = document.getElementById("lista-comentarios");
